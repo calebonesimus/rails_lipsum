@@ -9,12 +9,12 @@ class Lipsum < ActiveRecord::Base
   end
 
   def self.output(lipsum_requested)
-  if self.lipsums.keys.include?(lipsum_requested.to_sym)
-    self.lipsums[lipsum_requested.to_sym]
-  else
-    puts "Please select one of the following:"
-    Lipsum.lipsums.each { |name| puts name[0] }
+    if lipsum_requested == "random"
+      lipsum_requested = self.lipsums.keys.sample.to_sym
+      return self.lipsums[lipsum_requested.to_sym]
+    else
+      return self.lipsums[lipsum_requested.to_sym]
+    end
   end
-end
 
 end

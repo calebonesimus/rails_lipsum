@@ -8,6 +8,8 @@ class WelcomeController < ApplicationController
 
   def lorem
     @num_paragraphs = params[:num_paragraphs].to_i
-    @lipsum_requested = params[:lipsum_requested]
+    @lipsum_requested = params[:lipsum_requested] || "standard"
+    if @lipsum_requested == "vary"
+    end
   end
 end
